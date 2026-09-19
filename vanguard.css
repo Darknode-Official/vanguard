@@ -1,0 +1,503 @@
+/* ============================================================================
+   VANGUARD — Autonomous Attack Surface Intelligence Engine
+   Styles for the ultimate browser-based penetration testing recon tool
+   ============================================================================ */
+
+/* -- Main Container -- */
+.vg-engine {
+  background: #0a0e14;
+  color: #c8d6e5;
+  font-family: 'Courier New', 'JetBrains Mono', monospace;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* -- Header -- */
+.vg-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #1a2a44;
+}
+
+.vg-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #00ddff;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  margin-bottom: 4px;
+}
+
+.vg-subtitle {
+  font-size: 11px;
+  color: #4a6a8a;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.vg-disclaimer {
+  font-size: 9px;
+  color: #ff4444;
+  letter-spacing: 1px;
+  margin-top: 8px;
+  padding: 4px 12px;
+  background: rgba(255, 68, 68, 0.06);
+  border: 1px solid rgba(255, 68, 68, 0.15);
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* -- Target Input -- */
+.vg-target-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #0c1020;
+  border: 1px solid #1a2a44;
+  border-radius: 8px;
+}
+
+.vg-target-input {
+  flex: 1;
+  background: #060a14;
+  border: 2px solid #1a3050;
+  border-radius: 6px;
+  color: #00ddff;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 16px;
+  letter-spacing: 1px;
+  transition: border-color 0.2s;
+}
+
+.vg-target-input:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 12px rgba(0, 170, 255, 0.15);
+}
+
+.vg-target-input::placeholder {
+  color: #2a4a6a;
+  font-weight: normal;
+}
+
+.vg-launch-btn {
+  background: linear-gradient(135deg, #00aaff22, #00aaff11);
+  border: 2px solid #00aaff;
+  color: #00ddff;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 12px 28px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.vg-launch-btn:hover {
+  background: linear-gradient(135deg, #00aaff33, #00aaff22);
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.vg-launch-btn:active {
+  transform: translateY(0);
+}
+
+.vg-launch-btn.running {
+  background: linear-gradient(135deg, #ff444422, #ff444411);
+  border-color: #ff4444;
+  color: #ff4444;
+  animation: vg-pulse 1.5s ease-in-out infinite;
+}
+
+.vg-abort-btn {
+  background: #1a0a0a;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  font-family: monospace;
+  font-size: 11px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+@keyframes vg-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(255, 68, 68, 0.4); }
+}
+
+/* -- Phase Progress Bar -- */
+.vg-phases {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #0c1020;
+  border: 1px solid #1a2a44;
+  border-radius: 8px;
+}
+
+.vg-phase {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 4px;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  color: #2a4a6a;
+  background: #080c14;
+  border: 1px solid #0d1525;
+  transition: all 0.3s;
+}
+
+.vg-phase.active {
+  color: #ffaa00;
+  background: rgba(255, 170, 0, 0.08);
+  border-color: #ffaa00;
+  animation: vg-phase-pulse 1s ease-in-out infinite;
+}
+
+.vg-phase.complete {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.06);
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+.vg-phase.failed {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.06);
+  border-color: rgba(255, 68, 68, 0.3);
+}
+
+@keyframes vg-phase-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.vg-phase-num {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* -- Live Log Terminal -- */
+.vg-log-wrap {
+  margin-bottom: 16px;
+}
+
+.vg-log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #0c1020;
+  border: 1px solid #1a2a44;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.vg-log-title {
+  font-size: 11px;
+  color: #00aaff;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.vg-log-timer {
+  font-size: 12px;
+  color: #ffaa00;
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.vg-log {
+  background: #040810;
+  border: 1px solid #1a2a44;
+  border-radius: 0 0 8px 8px;
+  padding: 8px;
+  max-height: 350px;
+  overflow-y: auto;
+  font-size: 10px;
+  line-height: 1.6;
+  scrollbar-width: thin;
+  scrollbar-color: #1a3050 transparent;
+}
+
+.vg-log-entry {
+  padding: 1px 0;
+  display: flex;
+  gap: 8px;
+}
+
+.vg-log-time {
+  color: #3a5a7a;
+  flex-shrink: 0;
+  width: 55px;
+  font-variant-numeric: tabular-nums;
+}
+
+.vg-log-msg { color: #8ab4d4; }
+.vg-log-msg--info { color: #00aaff; }
+.vg-log-msg--success { color: #00ff88; }
+.vg-log-msg--warn { color: #ffaa00; }
+.vg-log-msg--error { color: #ff4444; }
+.vg-log-msg--phase { color: #aa66ff; font-weight: bold; letter-spacing: 1px; }
+.vg-log-msg--banner { color: #00ddff; font-weight: bold; }
+.vg-log-msg--finding { color: #ff6644; }
+.vg-log-msg--dim { color: #3a5a7a; }
+
+/* -- Results Sections -- */
+.vg-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vg-section {
+  background: #0c1020;
+  border: 1px solid #1a2a44;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vg-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #080c18;
+  border-bottom: 1px solid #1a2a44;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.vg-section-header:hover {
+  background: #0c1224;
+}
+
+.vg-section-title {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #00aaff;
+}
+
+.vg-section-count {
+  font-size: 10px;
+  color: #4a6a8a;
+  padding: 2px 8px;
+  background: #060a14;
+  border-radius: 3px;
+}
+
+.vg-section-body {
+  padding: 12px 14px;
+}
+
+/* -- Finding Cards -- */
+.vg-finding {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border-left: 3px solid;
+  background: #080c18;
+}
+
+.vg-finding--critical { border-left-color: #ff2222; background: rgba(255, 34, 34, 0.04); }
+.vg-finding--high { border-left-color: #ff6600; background: rgba(255, 102, 0, 0.04); }
+.vg-finding--medium { border-left-color: #ffaa00; background: rgba(255, 170, 0, 0.03); }
+.vg-finding--low { border-left-color: #00cc88; background: rgba(0, 204, 136, 0.03); }
+.vg-finding--info { border-left-color: #00aaff; background: rgba(0, 170, 255, 0.03); }
+
+.vg-finding-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.vg-finding-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #c8d6e5;
+}
+
+.vg-severity {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.vg-severity--critical { background: rgba(255, 34, 34, 0.15); color: #ff3333; border: 1px solid rgba(255, 34, 34, 0.3); }
+.vg-severity--high { background: rgba(255, 102, 0, 0.15); color: #ff8844; border: 1px solid rgba(255, 102, 0, 0.3); }
+.vg-severity--medium { background: rgba(255, 170, 0, 0.15); color: #ffcc44; border: 1px solid rgba(255, 170, 0, 0.3); }
+.vg-severity--low { background: rgba(0, 204, 136, 0.15); color: #00cc88; border: 1px solid rgba(0, 204, 136, 0.3); }
+.vg-severity--info { background: rgba(0, 170, 255, 0.15); color: #44bbff; border: 1px solid rgba(0, 170, 255, 0.3); }
+
+.vg-finding-desc {
+  font-size: 10px;
+  color: #6a8aaa;
+  line-height: 1.4;
+}
+
+.vg-finding-meta {
+  font-size: 9px;
+  color: #3a5a7a;
+  margin-top: 4px;
+}
+
+/* -- Risk Score Dashboard -- */
+.vg-risk-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #0c1020;
+  border: 1px solid #1a2a44;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.vg-risk-score {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vg-risk-number {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.vg-risk-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.vg-risk-low { border: 3px solid #00ff88; }
+.vg-risk-low .vg-risk-number { color: #00ff88; text-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
+.vg-risk-medium { border: 3px solid #ffaa00; }
+.vg-risk-medium .vg-risk-number { color: #ffaa00; text-shadow: 0 0 20px rgba(255, 170, 0, 0.4); }
+.vg-risk-high { border: 3px solid #ff6600; }
+.vg-risk-high .vg-risk-number { color: #ff6600; text-shadow: 0 0 20px rgba(255, 102, 0, 0.4); }
+.vg-risk-critical { border: 3px solid #ff2222; }
+.vg-risk-critical .vg-risk-number { color: #ff2222; text-shadow: 0 0 20px rgba(255, 34, 34, 0.4); }
+
+.vg-risk-breakdown {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.vg-risk-stat {
+  text-align: center;
+  padding: 8px;
+  background: #080c18;
+  border-radius: 4px;
+}
+
+.vg-risk-stat-num {
+  font-size: 20px;
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.vg-risk-stat-label {
+  font-size: 8px;
+  color: #4a6a8a;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* -- Report Section -- */
+.vg-report {
+  padding: 16px;
+  background: #0c1020;
+  border: 1px solid #1a2a44;
+  border-radius: 8px;
+}
+
+.vg-report-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.vg-report-btn {
+  background: #0a1a28;
+  border: 1px solid #1a3050;
+  color: #5a8aaa;
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.vg-report-btn:hover {
+  border-color: #00aaff;
+  color: #00ddff;
+  background: #0a2a44;
+}
+
+/* -- Data Tables -- */
+.vg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+
+.vg-table th {
+  text-align: left;
+  padding: 6px 8px;
+  color: #4a7a9a;
+  font-size: 9px;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #1a2a44;
+  font-weight: 600;
+}
+
+.vg-table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid #0d1525;
+  color: #8ab4d4;
+  word-break: break-all;
+}
+
+.vg-table tr:hover td {
+  background: rgba(0, 170, 255, 0.03);
+}
+
+/* -- Responsive -- */
+@media (max-width: 768px) {
+  .vg-target-bar { flex-direction: column; }
+  .vg-phases { flex-wrap: wrap; }
+  .vg-phase { min-width: calc(20% - 4px); }
+  .vg-risk-dashboard { flex-direction: column; }
+  .vg-risk-breakdown { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .vg-title { font-size: 20px; letter-spacing: 3px; }
+  .vg-phases { gap: 2px; }
+  .vg-phase { font-size: 7px; padding: 6px 2px; }
+  .vg-phase-num { font-size: 12px; }
+}
